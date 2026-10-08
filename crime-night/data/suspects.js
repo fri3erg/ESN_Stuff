@@ -29,7 +29,7 @@ export const SUSPECTS = [
     en: 'Owns more elegant jackets than you.',
     it: 'Ha più giacche eleganti di te.',
     es: 'Tiene más chaquetas elegantes que tú.' } },
-  { name: 'Davide', photo: null, caption: {
+  { name: 'Davide', photo: 'img/suspects/davide.jpg', caption: {
     en: 'Claims to have the best bars in Bologna.',
     it: 'Dice di avere le barre migliori di Bologna.',
     es: 'Dice tener las mejores barras de Bolonia.' } },
