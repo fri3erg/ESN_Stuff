@@ -97,13 +97,15 @@ const FALLBACK = `onerror="this.onerror=null;this.src='${PLACEHOLDER}'"`;
 
 // .photo wraps every suspect picture so CSS can lay the worn-archive overlay on top.
 // The wear variant is tied to the person, so the same suspect looks the same on every screen.
-// wear-1 and wear-2 people also get a big coffee ring on the frame, half on the photo and half off it.
+// A few people also get a big coffee ring across photo and frame (clipped to the frame).
 const VICTIM = CASES.find(c => c.missing).missing;
 const wearOf = name => { const i = SUSPECTS.findIndex(s => s.name === name); return i < 0 ? 2 : i % 4; };
+const COFFEE_RINGS = { Roberta: 1, Andrea: 2, Aitor: 2 }; // name -> ring placement
 
 function mugImg(name, alt = '', src = photo(name)) {
   const w = wearOf(name);
-  const ring = w === 1 || w === 2 ? `<i class="stain stain-${w}" aria-hidden="true"></i>` : '';
+  const r = COFFEE_RINGS[name];
+  const ring = r ? `<i class="stain-box" aria-hidden="true"><i class="stain stain-${r}"></i></i>` : '';
   return `<span class="photo wear-${w}"><img src="${src}" alt="${alt}" loading="lazy" width="120" height="160" ${FALLBACK}></span>${ring}`;
 }
 
