@@ -41,26 +41,57 @@ Languages: English (default), Italiano, Español.
 Plain static site with no build step: HTML + CSS + vanilla JS, with state in `localStorage`.
 No backend. It's kept tiny so it loads instantly on crowded pub mobile data.
 
-Planned structure:
-
 ```
 crime-night/
-├── index.html
-├── styles.css
-├── app.js
-├── data/        # cases, clues, translations
-└── img/         # suspect photos
+├── index.html          # page shell + loader
+├── styles.css          # black & white dossier theme
+├── app.js              # router, views, interactions
+├── lib/
+│   ├── assign.js       # name -> 4 clues (deterministic hash)
+│   ├── codes.js        # code-word matching
+│   ├── state.js        # progress saved in localStorage
+│   └── i18n.js         # EN/IT/ES helpers
+├── data/
+│   ├── cases.js        # the 4 cases, 20 clues, code words (EN/IT/ES)
+│   ├── suspects.js     # the 9 suspects + photos + captions
+│   └── ui.js           # interface text (EN/IT/ES)
+├── img/suspects/       # suspect photos
+├── tests/              # node tests (not deployed)
+└── docs/               # design spec + plan (not deployed)
 ```
 
 ## Run locally
 
-Any static server works, e.g. from this folder:
+From this folder:
 
 ```
-npx serve .
+npx serve -l 5173 .
 ```
 
-or `python -m http.server 8000`.
+Then open http://localhost:5173. To try it on your phone, open the "Network" address `serve` prints
+(same Wi-Fi). Edits show up on reload, no deploy needed. To start over as a new player, use
+"Not you? Start over" on the Clues tab.
+
+(Use `serve` rather than `python -m http.server`: on Windows Python can send `.js` files with the wrong
+type and the app won't start.)
+
+## Tests
+
+From this folder (Node 22+):
+
+```
+node --test "tests/*.test.mjs"
+```
+
+Checks the case data (every case solvable, all translations present, codes unique),
+clue assignment spread, code matching and state handling.
+
+## Adding suspect photos
+
+1. Put square-ish photos in `img/suspects/` (e.g. `img/suspects/sissi.jpg`, ~400×400, under 100 KB).
+2. In `data/suspects.js`, set that suspect's `photo: 'img/suspects/sissi.jpg'`.
+
+They're shown in black and white automatically. Without a photo a grey silhouette is shown.
 
 ## Deploy
 

@@ -8,7 +8,7 @@ Each project lives in its own folder and is deployed separately on Vercel.
 
 | Folder | What it is | Status |
 | --- | --- | --- |
-| [`crime-night/`](crime-night/) | ESN Crime Night: detective game web app for the Tandem Night at the Cluricaune Irish Pub | In design |
+| [`crime-night/`](crime-night/) | ESN Crime Night: detective game web app for the Tandem Night at the Cluricaune Irish Pub | Live: https://esnstuff-crime-night.vercel.app |
 
 ## Deploying a project on Vercel
 
