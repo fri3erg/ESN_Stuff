@@ -96,7 +96,7 @@ body[data-view="verdict"] .app { padding-bottom: 32px; }
   opacity: .9; pointer-events: none; text-transform: uppercase; white-space: nowrap;
 }
 .stamp.faded { opacity: .35; }
-.stamp.static { position: static; display: inline-block; margin-top: 12px; white-space: normal; }
+.stamp.static { position: static; display: inline-block; margin: 12px 0 10px; white-space: normal; transform: rotate(-3deg); }
 
 /* text */
 .page-title { font-size: 26px; color: #f1f1f1; margin: 4px 0 6px; }

@@ -251,6 +251,7 @@ const VIEWS = {
       <p class="mission">${t('rules_mission')}</p>
       <p>${t('rules_nophone')}</p>
       <div class="stamp static">${t('rules_fiction')}</div>
+      <a class="btn-primary" href="#/clues">${t('rules_cta')}</a>
     </section>
     <p class="credit">${t('credit')} · ESN Bologna</p>`;
   },
