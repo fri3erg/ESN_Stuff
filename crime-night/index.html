@@ -2,21 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>ESN Crime Night</title>
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-  <style>
-    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0d0d0d;color:#141414;font-family:'Special Elite',monospace}
-    .folder{background:#f3e7b3;padding:32px 28px;max-width:320px;margin:16px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.7);text-align:center}
-    h1{margin:0 0 8px;letter-spacing:.05em}
-    .stamp{display:inline-block;margin-top:16px;border:3px double #b3261e;color:#b3261e;padding:4px 10px;transform:rotate(-8deg)}
-  </style>
+  <meta name="description" content="ESN Bologna Crime Night: 4 crimes, 4 private clues. Talk to strangers.">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
 </head>
 <body>
-  <div class="folder">
-    <h1>ESN CRIME NIGHT</h1>
-    <p>Case file opening soon…</p>
-    <div class="stamp">TOP SECRET</div>
+  <div id="loader" class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="typed"></p>
+      <div class="loader-stamp">TOP SECRET</div>
+    </div>
   </div>
+
+  <div class="app">
+    <header class="topbar">
+      <span id="brand">ESN BOLOGNA // FILE 0413</span>
+      <label class="lang">
+        <span class="sr-only" id="lang-label">Language</span>
+        <select id="lang" aria-labelledby="lang-label">
+          <option value="en">EN</option>
+          <option value="it">IT</option>
+          <option value="es">ES</option>
+        </select>
+      </label>
+    </header>
+    <main id="view"></main>
+  </div>
+
+  <nav id="tabs" class="tabs" aria-label="Sections" hidden></nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="color:#fff;text-align:center;padding:24px">Please enable JavaScript, or find an ESN volunteer.</p></noscript>
 </body>
 </html>
