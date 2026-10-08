@@ -92,8 +92,11 @@ function shake(el) {
 
 /* ---------- partials ---------- */
 
+// A missing or misnamed photo falls back to the silhouette instead of a broken-image icon.
+const FALLBACK = `onerror="this.onerror=null;this.src='${PLACEHOLDER}'"`;
+
 function mugImg(name) {
-  return `<img src="${photo(name)}" alt="" loading="lazy" width="120" height="120">`;
+  return `<img src="${photo(name)}" alt="" loading="lazy" width="120" height="120" ${FALLBACK}>`;
 }
 
 function clueSlip(c, clue, withCode) {
@@ -241,7 +244,7 @@ const VIEWS = {
     return `<h1 class="page-title">${t('suspects_title')}</h1>
       <p class="sub">${t('suspects_sub')}</p>
       <div class="polaroids">${SUSPECTS.map((s, i) => `<figure class="polaroid" style="--tilt:${TILTS[i % TILTS.length]}deg">
-        <img src="${photo(s.name)}" alt="${s.name}" loading="lazy" width="200" height="200">
+        <img src="${photo(s.name)}" alt="${s.name}" loading="lazy" width="200" height="200" ${FALLBACK}>
         <figcaption><b>${s.name}</b><span>${esc(tr(s.caption))}</span></figcaption>
       </figure>`).join('')}</div>`;
   },

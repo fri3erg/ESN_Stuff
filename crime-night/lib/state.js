@@ -61,6 +61,10 @@ export function load(storage) {
     if (!isValid(s)) return null;
     const own = ownClues(s);
     for (const id of IDS) if (!s.unlocked[id].includes(own[id])) s.unlocked[id].unshift(own[id]);
+    for (const [id, v] of Object.entries(s.verdict)) {
+      const ok = v && Array.isArray(v.accused) && v.accused.every(n => typeof n === 'string');
+      if (!ok) delete s.verdict[id];
+    }
     return s;
   } catch {
     return null;

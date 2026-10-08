@@ -82,3 +82,19 @@ test('setVerdict stores a copy with a timestamp', () => {
   picked.push('Leo');
   assert.deepEqual(s.verdict[3], { accused: ['Sissi', 'Roberta'], at: 123 });
 });
+
+test('load rejects corrupt verdict entries instead of crashing later', () => {
+  const st = S.memoryStorage();
+  for (const verdict of [{ 1: {} }, { 1: { accused: 'Leo', at: 1 } }, { 1: { accused: [1, 2], at: 1 } }, { 1: null }]) {
+    const s = S.create('Nora');
+    s.verdict = verdict;
+    st.setItem(S.KEY, JSON.stringify(s));
+    const loaded = S.load(st);
+    assert.ok(loaded, 'state still loads');
+    assert.deepEqual(loaded.verdict, {}, JSON.stringify(verdict));
+  }
+  const ok = S.create('Nora');
+  S.setVerdict(ok, 3, ['Sissi', 'Roberta'], 5);
+  st.setItem(S.KEY, JSON.stringify(ok));
+  assert.deepEqual(S.load(st).verdict, { 3: { accused: ['Sissi', 'Roberta'], at: 5 } });
+});
