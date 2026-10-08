@@ -202,7 +202,7 @@ input:focus { outline: 3px solid var(--red); outline-offset: 1px; }
   position: relative; background: #fff; border: 1px solid #999; padding: 4px 4px 6px;
   font: 13px var(--body); color: var(--ink); cursor: pointer; min-height: var(--tap); overflow: hidden;
 }
-.mug img { width: 100%; aspect-ratio: 1; object-fit: cover; filter: grayscale(1) contrast(1.1); background: #bbb; }
+.mug img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; filter: grayscale(1) contrast(1.1); background: #bbb; }
 .mug span { display: block; margin-top: 4px; overflow-wrap: anywhere; }
 .mug.x img, .mug.x span { opacity: .4; }
 .mug.x::after {
@@ -224,7 +224,7 @@ input:focus { outline: 3px solid var(--red); outline-offset: 1px; }
   margin: 0; background: #f5f5f0; color: var(--ink); padding: 8px 8px 12px;
   transform: rotate(var(--tilt, 0deg)); box-shadow: 0 8px 18px rgba(0, 0, 0, .6);
 }
-.polaroid img { aspect-ratio: 1; object-fit: cover; width: 100%; filter: grayscale(1) contrast(1.1); background: #bbb; }
+.polaroid img { aspect-ratio: 3 / 4; height: auto; object-fit: cover; width: 100%; filter: grayscale(1) contrast(1.1); background: #bbb; }
 .polaroid figcaption { font-size: 13px; margin-top: 8px; display: grid; gap: 2px; }
 .polaroid b { font-family: var(--type); font-size: 17px; font-weight: 400; }
 
@@ -245,7 +245,7 @@ input:focus { outline: 3px solid var(--red); outline-offset: 1px; }
 .verdict-card .lbl { text-align: center; }
 .accused { display: flex; justify-content: center; gap: 12px; margin: 8px 0 14px; }
 .accused figure { margin: 0; width: 42%; max-width: 150px; }
-.accused img { aspect-ratio: 1; object-fit: cover; width: 100%; filter: grayscale(1) contrast(1.1); border: 2px solid var(--ink); background: #bbb; }
+.accused img { aspect-ratio: 3 / 4; height: auto; object-fit: cover; width: 100%; filter: grayscale(1) contrast(1.1); border: 2px solid var(--ink); background: #bbb; }
 .accused figcaption { font: 22px var(--type); margin-top: 4px; }
 .verdict-card dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; text-align: left; margin: 0 auto 14px; max-width: 280px; font-size: 15px; }
 .verdict-card dt { font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: .1em; align-self: center; }

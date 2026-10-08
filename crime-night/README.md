@@ -88,10 +88,14 @@ clue assignment spread, code matching and state handling.
 
 ## Adding suspect photos
 
-1. Put square-ish photos in `img/suspects/` (e.g. `img/suspects/sissi.jpg`, ~400×400, under 100 KB).
+1. From this folder, run (needs Python with Pillow):
+
+       python tools/prepare_photo.py "path/to/WhatsApp Image.jpeg" sissi
+
+   It makes `img/suspects/sissi.jpg`: black and white, 3:4 portrait, ~40 KB.
 2. In `data/suspects.js`, set that suspect's `photo: 'img/suspects/sissi.jpg'`.
 
-They're shown in black and white automatically. Without a photo a grey silhouette is shown.
+Without a photo a grey silhouette is shown.
 
 ## Deploy
 

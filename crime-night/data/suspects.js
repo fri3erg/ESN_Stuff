@@ -9,7 +9,7 @@ export const SUSPECTS = [
     en: "Sissi's partner in (fake) crime.",
     it: 'Complice (per finta) di Sissi.',
     es: 'Cómplice (de mentira) de Sissi.' } },
-  { name: 'Elia', photo: null, caption: {
+  { name: 'Elia', photo: 'img/suspects/elia.jpg', caption: {
     en: 'Built this website. Restarts routers for fun.',
     it: 'Ha fatto questo sito. Riavvia router per divertimento.',
     es: 'Hizo esta web. Reinicia routers por diversión.' } },
