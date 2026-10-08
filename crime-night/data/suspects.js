@@ -13,7 +13,7 @@ export const SUSPECTS = [
     en: 'Built this website. Restarts routers for fun.',
     it: 'Ha fatto questo sito. Riavvia router per divertimento.',
     es: 'Hizo esta web. Reinicia routers por diversión.' } },
-  { name: 'Francesco', photo: null, caption: {
+  { name: 'Francesco', photo: 'img/suspects/francesco.jpg', caption: {
     en: 'Runs too fast. Picks fantacalcio players too badly.',
     it: 'Corre troppo veloce. Sceglie i giocatori del fantacalcio troppo male.',
     es: 'Corre demasiado rápido. Elige fatal en el fantacalcio.' } },

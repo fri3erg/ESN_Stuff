@@ -106,6 +106,16 @@ body[data-view="verdict"] .app { padding-bottom: 32px; }
   border-bottom: 1.5px solid var(--ink); margin: 18px 0 8px; padding-bottom: 3px;
 }
 .crime { font-size: 15px; margin: 0; }
+.lbl { clear: both; }
+/* MISSING poster for the kidnapped VP on Case 03, pinned into the crime text */
+.missing {
+  float: right; width: 40%; margin: 4px 0 10px 12px; padding: 6px 6px 8px;
+  background: #f5f5f0; border: 1px solid #999; text-align: center;
+  transform: rotate(3deg); box-shadow: 0 4px 10px rgba(0, 0, 0, .35);
+}
+.missing img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; filter: grayscale(1) contrast(1.1); background: #bbb; }
+.missing figcaption { font-size: 13px; margin-top: 4px; }
+.missing b { display: block; font: 18px var(--type); letter-spacing: .08em; color: var(--red); }
 .small { font-size: 13px; opacity: .8; }
 .center { text-align: center; }
 

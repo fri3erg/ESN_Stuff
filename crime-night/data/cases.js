@@ -67,6 +67,7 @@ export const CASES = [
   },
   {
     id: 3, culprits: 2,
+    missing: { name: 'Aitor', photo: 'img/suspects/aitor.jpg' }, // the kidnapped VP, shown as a MISSING poster
     title: { en: 'The Vice President Is Missing', it: 'Il Vicepresidente È Scomparso', es: 'El Vicepresidente Ha Desaparecido' },
     short: { en: 'VP Is Missing', it: 'VP Scomparso', es: 'VP Desaparecido' },
     crime: {

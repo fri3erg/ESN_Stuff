@@ -100,6 +100,13 @@ function mugImg(name, alt = '') {
   return `<span class="photo"><img src="${photo(name)}" alt="${alt}" loading="lazy" width="120" height="160" ${FALLBACK}></span>`;
 }
 
+function missingPoster(m) {
+  return `<figure class="missing">
+    <span class="photo"><img src="${m.photo}" alt="${esc(m.name)}" loading="lazy" width="120" height="160" ${FALLBACK}></span>
+    <figcaption><b>${t('missing_label')}</b>${esc(m.name)}</figcaption>
+  </figure>`;
+}
+
 function clueSlip(c, clue, withCode) {
   return `<article class="slip" id="slip-${c.id}-${clue.letter}">
     <header><span>${t('case_n', { n: pad(c.id) })} · ${esc(tr(c.short))}</span><span class="badge">${clue.letter}</span></header>
@@ -173,6 +180,7 @@ const VIEWS = {
       <h1>${t('case_n', { n: pad(id) })}</h1>
       <p class="agent"><b>${esc(tr(c.title))}</b> · ${culpritsLabel(c)}</p>
       <h3 class="lbl">${t('the_crime')}</h3>
+      ${c.missing ? missingPoster(c.missing) : ''}
       <p class="crime">${esc(tr(c.crime))}</p>
       <h3 class="lbl">${t('evidence')}</h3>
       <div class="ev">${'ABCDE'.split('').map(L => `<button class="ev-box ${got.includes(L) ? 'got' : ''} ${L === own ? 'mine' : ''}" data-action="ev" data-letter="${L}" aria-pressed="${got.includes(L)}">${L}</button>`).join('')}</div>
