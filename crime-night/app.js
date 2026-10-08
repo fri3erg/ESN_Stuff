@@ -96,13 +96,20 @@ function shake(el) {
 const FALLBACK = `onerror="this.onerror=null;this.src='${PLACEHOLDER}'"`;
 
 // .photo wraps every suspect picture so CSS can lay the worn-archive overlay on top.
-function mugImg(name, alt = '') {
-  return `<span class="photo"><img src="${photo(name)}" alt="${alt}" loading="lazy" width="120" height="160" ${FALLBACK}></span>`;
+// The wear variant is tied to the person, so the same suspect looks the same on every screen.
+// wear-1 and wear-2 people also get a big coffee ring on the frame, half on the photo and half off it.
+const VICTIM = CASES.find(c => c.missing).missing;
+const wearOf = name => { const i = SUSPECTS.findIndex(s => s.name === name); return i < 0 ? 2 : i % 4; };
+
+function mugImg(name, alt = '', src = photo(name)) {
+  const w = wearOf(name);
+  const ring = w === 1 || w === 2 ? `<i class="stain stain-${w}" aria-hidden="true"></i>` : '';
+  return `<span class="photo wear-${w}"><img src="${src}" alt="${alt}" loading="lazy" width="120" height="160" ${FALLBACK}></span>${ring}`;
 }
 
 function missingPoster(m) {
   return `<figure class="missing">
-    <span class="photo"><img src="${m.photo}" alt="${esc(m.name)}" loading="lazy" width="120" height="160" ${FALLBACK}></span>
+    ${mugImg(m.name, esc(m.name), m.photo)}
     <figcaption><b>${t('missing_label')}</b>${esc(m.name)}</figcaption>
   </figure>`;
 }
@@ -248,7 +255,12 @@ const VIEWS = {
       <div class="polaroids">${SUSPECTS.map((s, i) => `<figure class="polaroid" style="--tilt:${TILTS[i % TILTS.length]}deg">
         ${mugImg(s.name, s.name)}
         <figcaption><b>${s.name}</b><span>${esc(tr(s.caption))}</span></figcaption>
-      </figure>`).join('')}</div>`;
+        <i class="exhibit">${t('exhibit')} ${pad(i + 1)}</i>
+      </figure>`).join('')}
+      <figure class="polaroid victim" style="--tilt:2deg">
+        ${mugImg(VICTIM.name, VICTIM.name, VICTIM.photo)}
+        <figcaption><b>${esc(VICTIM.name)}</b><em class="victim-tag">${t('victim_tag')}</em><span>${t('victim_caption')}</span></figcaption>
+      </figure></div>`;
   },
 
   rules() {
