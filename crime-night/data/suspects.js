@@ -1,7 +1,7 @@
 // The 9 suspects, same for every case. To add a photo: put the file in img/suspects/
 // (e.g. img/suspects/sissi.jpg, square-ish) and set `photo` to that path.
 export const SUSPECTS = [
-  { name: 'Sissi', photo: null, caption: {
+  { name: 'Sissi', photo: 'img/suspects/sissi.jpg', caption: {
     en: 'Gossip expert. Organised this whole mess.',
     it: 'Esperta di gossip. Ha organizzato tutto questo caos.',
     es: 'Experta en cotilleos. Organizó todo este lío.' } },
