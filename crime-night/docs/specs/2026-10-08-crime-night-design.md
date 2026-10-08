@@ -104,7 +104,7 @@ The active tab is raised and paper-coloured, with a crooked red marker underline
 
 1. **Loader** (~1.5 s, tap to skip, skipped under `prefers-reduced-motion`): a typewriter types
    "OPENING CASE FILE…", then a red TOP SECRET stamp slams down.
-2. **Identify** (first visit / after reset): "Identify yourself, Detective": name field, optional team name,
+2. **Identify** (first visit / after reset): "Identify yourself, Detective": name field,
    language buttons, "Open my file" button. Small print explaining that the name decides your clues.
 3. **01 Clues**: yellow folder with paperclip and TOP SECRET stamp, "Detective: MARCO". Four clue slips,
    each with case title, letter badge, "CLEARED: …" in red, the alibi text, and the **code word** in a
@@ -116,7 +116,7 @@ The active tab is raised and paper-coloured, with a crooked red marker underline
    tapping an unlocked letter shows its alibi); unlocked alibis listed below; **Suspects** 3×3 mugshot grid
    (tap to cross); code-entry field; **MAKE ACCUSATION** button.
 6. **Accusation → Verdict**: pick exactly 1 (cases 01–02) or 2 (cases 03–04) suspects, then confirm. The verdict
-   is a full-screen stamped card with case title, accused names + photos, detective name, team name,
+   is a full-screen stamped card with case title, accused names + photos, detective name,
    **"Evidence collected: n/5"** stamp and time. "Show this to an ESN volunteer to claim your prize."
    The verdict can be reopened from the case and changed (the in-person check is what counts).
 7. **03 Suspects**: 9 black-and-white polaroid mugshots with a one-line caption each.
@@ -148,7 +148,7 @@ The active tab is raised and paper-coloured, with a crooked red marker underline
 
 ```js
 {
-  name: "Marco", team: "Sherlock Homies", lang: "en",
+  name: "Marco", lang: "en",
   unlocked: { 1: ["B","A"], 2: ["C"], 3: ["D"], 4: ["A"] },   // own clues pre-unlocked
   manual:   { 1: ["Elia"], ... },                            // manual cross-offs
   verdict:  { 1: { accused: ["Vincenzo"], at: 1791480000000 }, ... }
@@ -175,6 +175,9 @@ try/catch, so private mode still works for the session.
   5. `normaliseName` and `normaliseCode` examples.
 - Manual: run locally (`npx serve crime-night`), check at 375 px width in browser devtools: identify →
   unlock a code → auto-cross → accuse → verdict; switch language on each screen; reload to keep state.
+
+**Change 2026-10-08:** the optional team-name field was removed (Identify, Clues, Verdict, state).
+Players can still play together informally; prizes are per person.
 
 ## 12. Open items (non-blocking)
 

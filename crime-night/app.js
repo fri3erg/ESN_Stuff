@@ -128,7 +128,6 @@ const VIEWS = {
       <h2>${t('id_title')}</h2>
       <form id="identify-form" novalidate>
         <label>${t('id_name')}<input name="name" autocomplete="given-name" maxlength="40" required></label>
-        <label>${t('id_team')}<input name="team" maxlength="40" placeholder="${t('team_placeholder')}"></label>
         <p class="error" id="id-error" hidden>${t('id_err_empty')}</p>
         <button class="btn-primary" type="submit">${t('id_open')}</button>
       </form>
@@ -145,9 +144,6 @@ const VIEWS = {
       <p class="agent">${t('clues_detective', { name: `<u>${esc(state.name)}</u>` })} · ${t('clues_count')}</p>
       <p class="file-ref">REF: <span class="redact">XXXXXXXX</span> · ESN/BO</p>
       ${CASES.map(c => clueSlip(c, c.clues.find(x => x.letter === own[c.id]), true)).join('')}
-      <label class="team-field">${t('team_label')}
-        <input data-field="team" maxlength="40" value="${esc(state.team)}" placeholder="${t('team_placeholder')}">
-      </label>
       <button class="link" data-action="reset">${t('not_you')}</button>
     </section>`;
   },
@@ -228,7 +224,6 @@ const VIEWS = {
       <div class="accused">${v.accused.map(n => `<figure>${mugImg(n)}<figcaption>${esc(n)}</figcaption></figure>`).join('')}</div>
       <dl>
         <dt>${t('verdict_detective')}</dt><dd>${esc(state.name)}</dd>
-        ${state.team ? `<dt>${t('verdict_team')}</dt><dd>${esc(state.team)}</dd>` : ''}
         <dt>${t('verdict_time')}</dt><dd>${time}</dd>
       </dl>
       <div class="stamp">${t('verdict_evidence', { n: state.unlocked[id].length })}</div>
@@ -291,7 +286,7 @@ main.addEventListener('submit', e => {
       shake(form.querySelector('input[name="name"]'));
       return;
     }
-    state = S.create(name, String(data.get('team') || ''), getLang());
+    state = S.create(name, getLang());
     persist();
     go('#/clues');
     return;
@@ -364,13 +359,6 @@ main.addEventListener('click', e => {
       go(`#/case/${r.id}/verdict`);
       break;
   }
-});
-
-main.addEventListener('change', e => {
-  if (e.target.dataset.field !== 'team') return;
-  state.team = e.target.value.trim().slice(0, 40);
-  persist();
-  toast(t('saved'));
 });
 
 langSel.addEventListener('change', () => {

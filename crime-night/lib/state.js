@@ -26,14 +26,13 @@ export function safeStorage() {
   }
 }
 
-export function create(name, team = '', lang = 'en') {
+export function create(name, lang = 'en') {
   const own = assignClues(name);
   if (!own) return null;
   const unlocked = perCase();
   for (const id of IDS) unlocked[id] = [own[id]];
   return {
     name: String(name).trim().slice(0, MAX_LEN),
-    team: String(team ?? '').trim().slice(0, MAX_LEN),
     lang,
     unlocked,
     manual: perCase(),
@@ -48,7 +47,6 @@ export function ownClues(state) {
 function isValid(s) {
   return !!s && typeof s === 'object'
     && typeof s.name === 'string' && normaliseName(s.name) !== ''
-    && typeof s.team === 'string'
     && s.unlocked && s.manual && s.verdict && typeof s.verdict === 'object'
     && IDS.every(id => Array.isArray(s.unlocked[id]) && Array.isArray(s.manual[id]));
 }

@@ -5,19 +5,35 @@ import { assignClues } from '../lib/assign.js';
 import * as S from '../lib/state.js';
 
 test('create pre-unlocks exactly the player\'s own clues', () => {
-  const s = S.create('Marco', 'Sherlock Homies', 'it');
+  const s = S.create('Marco', 'it');
   const own = assignClues('Marco');
   for (const id of [1, 2, 3, 4]) assert.deepEqual(s.unlocked[id], [own[id]]);
-  assert.equal(s.team, 'Sherlock Homies');
   assert.equal(s.lang, 'it');
+  assert.ok(!('team' in s), 'no team field');
   assert.deepEqual(S.ownClues(s), own);
   assert.equal(S.create('  !! '), null);
 });
 
-test('create trims and caps name and team at 40 chars', () => {
-  const s = S.create('  ' + 'x'.repeat(60), ' ' + 'y'.repeat(60));
+test('create trims and caps the name at 40 chars', () => {
+  const s = S.create('  ' + 'x'.repeat(60));
   assert.equal(s.name.length, 40);
-  assert.equal(s.team.length, 40);
+});
+
+test('progress saved by the old version (with a team field) still loads', () => {
+  const st = S.memoryStorage();
+  const old = { ...S.create('Pablo'), team: 'Sherlock Homies' };
+  st.setItem(S.KEY, JSON.stringify(old));
+  const loaded = S.load(st);
+  assert.ok(loaded);
+  assert.equal(loaded.name, 'Pablo');
+});
+
+test('state without a team field loads', () => {
+  const st = S.memoryStorage();
+  const s = S.create('Ines');
+  delete s.team;
+  st.setItem(S.KEY, JSON.stringify(s));
+  assert.ok(S.load(st));
 });
 
 test('save + load round-trips', () => {
@@ -32,7 +48,7 @@ test('save + load round-trips', () => {
 
 test('load survives garbage, missing fields and throwing storage', () => {
   const st = S.memoryStorage();
-  for (const raw of ['{not json', 'null', '42', '{"name":""}', JSON.stringify({ name: 'Ok', team: '', unlocked: {}, manual: {}, verdict: {} })]) {
+  for (const raw of ['{not json', 'null', '42', '{"name":""}', JSON.stringify({ name: 'Ok', unlocked: {}, manual: {}, verdict: {} })]) {
     st.setItem(S.KEY, raw);
     assert.equal(S.load(st), null, raw);
   }
