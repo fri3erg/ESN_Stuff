@@ -57,8 +57,8 @@ function route() {
     if (b === 'verdict' && state.verdict[id]) return { view: 'verdict', id };
     return { view: 'case', id, tab: 'cases' };
   }
-  if (v === 'cases' || v === 'suspects' || v === 'rules') return { view: v, tab: v };
-  return { view: 'clues', tab: 'clues' };
+  if (v === 'clues' || v === 'cases' || v === 'suspects') return { view: v, tab: v };
+  return { view: 'rules', tab: 'rules' }; // players land on the rules first
 }
 
 function go(hash) {
@@ -131,7 +131,6 @@ const VIEWS = {
         <p class="error" id="id-error" hidden>${t('id_err_empty')}</p>
         <button class="btn-primary" type="submit">${t('id_open')}</button>
       </form>
-      <p class="small">${t('id_note')}</p>
     </section>
     <p class="credit">${t('credit')} · ESN Bologna</p>`;
   },
@@ -144,7 +143,6 @@ const VIEWS = {
       <p class="agent">${t('clues_detective', { name: `<u>${esc(state.name)}</u>` })} · ${t('clues_count')}</p>
       <p class="file-ref">REF: <span class="redact">XXXXXXXX</span> · ESN/BO</p>
       ${CASES.map(c => clueSlip(c, c.clues.find(x => x.letter === own[c.id]), true)).join('')}
-      <button class="link" data-action="reset">${t('not_you')}</button>
     </section>`;
   },
 
@@ -288,7 +286,7 @@ main.addEventListener('submit', e => {
     }
     state = S.create(name, getLang());
     persist();
-    go('#/clues');
+    go('#/rules');
     return;
   }
 
@@ -314,14 +312,6 @@ main.addEventListener('click', e => {
   const name = el.dataset.name;
 
   switch (el.dataset.action) {
-    case 'reset':
-      if (confirm(t('reset_confirm'))) {
-        S.clear(storage);
-        state = null;
-        go('#/');
-      }
-      break;
-
     case 'ev': {
       const L = el.dataset.letter;
       if (state.unlocked[r.id].includes(L)) {

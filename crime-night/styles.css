@@ -154,7 +154,13 @@ input:focus { outline: 3px solid var(--red); outline-offset: 1px; }
   text-decoration: underline; color: inherit; cursor: pointer;
   display: block; margin: 8px auto 0; min-height: var(--tap);
 }
-.back { display: inline-flex; align-items: center; font-family: var(--type); font-size: 14px; color: #cfcfcf; text-decoration: none; min-height: var(--tap); }
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--type); font-size: 16px; letter-spacing: .06em; color: #f1f1f1; text-decoration: none;
+  border: 2px solid #f1f1f1; border-radius: 2px; padding: 8px 14px; min-height: var(--tap);
+  background: rgba(255, 255, 255, .06); margin-bottom: 4px;
+}
+.back:active { background: rgba(255, 255, 255, .18); }
 .error { color: var(--red); font-weight: 700; margin: 0; }
 .identify form { display: grid; gap: 12px; margin-top: 14px; }
 .identify h2 { font-size: 20px; }

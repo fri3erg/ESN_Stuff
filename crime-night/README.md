@@ -69,8 +69,8 @@ npx serve -l 5173 .
 ```
 
 Then open http://localhost:5173. To try it on your phone, open the "Network" address `serve` prints
-(same Wi-Fi). Edits show up on reload, no deploy needed. To start over as a new player, use
-"Not you? Start over" on the Clues tab.
+(same Wi-Fi). Edits show up on reload, no deploy needed. To play as a different person, open a private/incognito
+window (or clear the site's data); players can't switch name themselves.
 
 (Use `serve` rather than `python -m http.server`: on Windows Python can send `.js` files with the wrong
 type and the app won't start.)
