@@ -177,7 +177,7 @@ try/catch, so private mode still works for the session.
   unlock a code → auto-cross → accuse → verdict; switch language on each screen; reload to keep state.
 
 **Change 2026-10-08:** the optional team-name field was removed (Identify, Clues, Verdict, state).
-Players can still play together informally; prizes are per person.
+Players can still play together informally.
 
 ## 12. Open items (non-blocking)
 
