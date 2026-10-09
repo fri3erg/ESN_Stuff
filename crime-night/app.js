@@ -261,14 +261,17 @@ const VIEWS = {
       </figure>`).join('')}
       <figure class="polaroid victim" style="--tilt:2deg">
         <div class="tv">
-          ${mugImg(VICTIM.name, VICTIM.name, VICTIM.photo, false)}
-          <div class="tv-lower" aria-hidden="true">
-            <b class="tv-title">CHI L'HA VISTO?</b>
-            <span class="tv-name">${esc(VICTIM.name.toUpperCase())} · SCOMPARSO DA 48 ORE</span>
-            <span class="tv-sub">Ultimo avvistamento: ufficio ESN, ore 20:30</span>
+          <div class="tv-photo">${mugImg(VICTIM.name, VICTIM.name, VICTIM.photo, false)}<i class="tv-bug" aria-hidden="true">CHI<br>L'HA<br>VISTO?</i></div>
+          <div class="tv-panel">
+            <b class="tv-name">${esc(VICTIM.name.toUpperCase())}</b>
+            <dl>
+              <dt>Role</dt><dd>ESN VICE PRESIDENT</dd>
+              <dt>Missing since</dt><dd>48 HOURS</dd>
+            </dl>
+            <p class="tv-notes">speaks Bolognese with a Spanish accent</p>
           </div>
         </div>
-        <figcaption><b>${esc(VICTIM.name)}</b><em class="victim-tag">${t('victim_tag')}</em><span>${t('victim_caption')}</span></figcaption>
+        <figcaption><em class="victim-tag">${t('victim_tag')}</em><span>${t('victim_caption')}</span></figcaption>
       </figure></div>`;
   },
 
