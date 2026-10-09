@@ -17,7 +17,7 @@ export const SUSPECTS = [
     en: 'Runs too fast. Picks fantacalcio players too badly.',
     it: 'Corre troppo veloce. Sceglie i giocatori del fantacalcio troppo male.',
     es: 'Corre demasiado rápido. Elige fatal en el fantacalcio.' } },
-  { name: 'Mary', photo: null, caption: {
+  { name: 'Mary', photo: 'img/suspects/mary.jpg', caption: {
     en: 'Professional negotiator. Zero deals closed.',
     it: 'Negoziatrice professionista. Zero accordi chiusi.',
     es: 'Negociadora profesional. Cero acuerdos cerrados.' } },
