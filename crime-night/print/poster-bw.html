@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=block" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { width: 210mm; height: 297mm; background: #fff; font-family: 'Courier Prime', monospace; color: #141414; }
+  .page { position: relative; width: 210mm; height: 297mm; padding: 14mm 12mm 12mm; }
+  .folder {
+    position: relative; height: 100%; background: #ffffff; border: 1.2mm solid #141414;
+    border-radius: 1mm 6mm 1mm 1mm; padding: 14mm 12mm 8mm; display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .folder::before { content: ""; position: absolute; top: -8.5mm; left: -1.2mm; width: 62mm; height: 8.5mm; background: #ffffff; border: 1.2mm solid #141414; border-bottom: 0; border-radius: 3mm 3mm 0 0; }
+  .tab { position: absolute; top: -7mm; left: 6mm; font: 4mm 'Special Elite'; letter-spacing: .12em; }
+  .clip { position: absolute; top: -14mm; right: 22mm; width: 7mm; height: 26mm; border: 1.3mm solid #8a8a8a; border-radius: 5mm; }
+  .kicker { font-size: 3.6mm; letter-spacing: .1em; white-space: nowrap; font-weight: 700; margin: 0; }
+  h1 { font: 21mm/0.95 'Special Elite'; margin: 5mm 0 3mm; letter-spacing: .02em; }
+  .tagline { font-size: 5.4mm; margin: 0 0 5mm; }
+  .stamp { position: absolute; top: 2mm; left: 70mm; transform: rotate(-6deg); border: 1.2mm double #141414; color: #141414; font: 5.5mm 'Special Elite'; padding: .5mm 3mm; }
+  .scan { font: 7.5mm 'Special Elite'; letter-spacing: .06em; margin: 0 0 3mm; color: #141414; }
+  .qr { background: #fff; border: 1.2mm solid #141414; padding: 5mm; width: 86mm; height: 86mm; box-shadow: 2.5mm 2.5mm 0 #141414; }
+  .qr svg { width: 100%; height: 100%; display: block; }
+  .url { font-size: 4.6mm; font-weight: 700; margin: 5mm 0 0; letter-spacing: .02em; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; width: 100%; margin: 6mm 0 0; text-align: left; }
+  .step { background: #f1f1f1; border-left: 1.4mm solid #141414; padding: 3mm 3.5mm; }
+  .step b { display: block; font: 6mm 'Special Elite'; color: #141414; margin-bottom: 1mm; }
+  .step span { font-size: 3.9mm; line-height: 1.3; }
+  .mission { font: 5.2mm/1.3 'Special Elite'; margin: 6mm 0 0; border-top: .5mm dashed #141414; padding-top: 5mm; width: 100%; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; width: 100%; font-size: 3.6mm; }
+  .fiction { border: .9mm solid #141414; color: #141414; font: 3.8mm 'Special Elite'; padding: .8mm 2.5mm; transform: rotate(-3deg); }
+  .ring { position: absolute; right: 8mm; top: 88mm; width: 34mm; height: 34mm; border-radius: 50%; border: 2.4mm solid rgba(0,0,0,.08); }
+</style></head><body><div class="page"><div class="folder">
+  <div class="tab">CASE FILE 0413</div><div class="clip"></div><div class="ring"></div>
+  <p class="kicker">ESN BOLOGNA · TANDEM NIGHT · CLURICAUNE IRISH PUB</p>
+  <h1>ESN CRIME<br>NIGHT</h1>
+  <div class="stamp">TOP SECRET</div>
+  <p class="tagline">4 crimes. 9 suspects. A pub full of detectives.</p>
+  <p class="scan">SCAN TO OPEN YOUR CASE FILE</p>
+  <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h37v37H0z"/><path stroke="#141414" d="M0 0.5h7m2 0h1m2 0h4m1 0h1m1 0h1m3 0h2m5 0h7M0 1.5h1m5 0h1m2 0h1m2 0h3m1 0h2m5 0h2m3 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m3 0h2m1 0h2m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m1 0h5m6 0h2m5 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m3 0h1m1 0h2m2 0h2m2 0h1m1 0h2m6 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 7.5h1m3 0h1m1 0h2m1 0h1m3 0h1m1 0h2m1 0h2M3 8.5h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h3m5 0h1m2 0h1m4 0h2M5 9.5h1m2 0h1m1 0h2m1 0h3m1 0h6m1 0h2m3 0h1m1 0h4M2 10.5h1m1 0h1m1 0h4m5 0h1m3 0h2m2 0h3m3 0h4m2 0h2M3 11.5h2m3 0h1m1 0h5m1 0h2m3 0h1m1 0h2m1 0h2m1 0h2m2 0h2m1 0h1M1 12.5h1m1 0h2m1 0h2m2 0h1m2 0h1m1 0h2m2 0h2m7 0h1m1 0h2m1 0h1m2 0h1M2 13.5h2m3 0h2m1 0h1m1 0h3m3 0h1m1 0h1m4 0h3m1 0h1m2 0h1m1 0h2M5 14.5h5m1 0h1m1 0h1m3 0h1m1 0h1m7 0h4m2 0h4M3 15.5h1m4 0h2m5 0h1m1 0h4m1 0h2m2 0h1m6 0h2M0 16.5h5m1 0h1m2 0h1m4 0h5m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1M2 17.5h1m1 0h2m2 0h2m4 0h1m1 0h2m1 0h1m2 0h1m4 0h1m1 0h1m1 0h1m2 0h2M2 18.5h1m3 0h1m3 0h2m3 0h2m1 0h3m3 0h1m2 0h1m2 0h1m1 0h1m3 0h1M0 19.5h1m1 0h1m2 0h1m3 0h1m1 0h4m3 0h1m1 0h2m2 0h3m1 0h2m2 0h2m1 0h1M1 20.5h1m4 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m2 0h2M0 21.5h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h2m9 0h5m2 0h3M3 22.5h1m2 0h1m1 0h1m1 0h1m8 0h1m1 0h1m2 0h2m1 0h1m1 0h2m1 0h1m3 0h1M2 23.5h1m2 0h1m2 0h2m2 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h5m1 0h2M0 24.5h2m2 0h1m1 0h1m4 0h2m1 0h2m3 0h1m1 0h5m2 0h1m1 0h2m1 0h1m1 0h2M0 25.5h3m2 0h1m2 0h2m4 0h5m1 0h1m1 0h1m2 0h2m2 0h1m2 0h3M0 26.5h3m1 0h3m1 0h1m2 0h2m2 0h1m1 0h1m2 0h9m1 0h7M0 27.5h1m3 0h1m2 0h2m3 0h1m2 0h1m3 0h3m1 0h1m4 0h2m1 0h1m2 0h3M0 28.5h1m3 0h1m1 0h1m1 0h1m2 0h2m3 0h1m1 0h1m1 0h2m2 0h2m1 0h8M8 29.5h2m2 0h2m4 0h2m1 0h1m3 0h4m3 0h4M0 30.5h7m1 0h1m3 0h1m2 0h1m3 0h2m1 0h5m1 0h1m1 0h1m1 0h3m1 0h1M0 31.5h1m5 0h1m4 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h2m3 0h2m1 0h1M0 32.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h1m3 0h1m3 0h7m3 0h1M0 33.5h1m1 0h3m1 0h1m1 0h2m3 0h6m1 0h2m2 0h1m1 0h1m1 0h1m1 0h1m2 0h2M0 34.5h1m1 0h3m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h2m2 0h3m1 0h2M0 35.5h1m5 0h1m2 0h1m4 0h1m2 0h1m2 0h5m1 0h1m3 0h1m1 0h5M0 36.5h7m3 0h2m1 0h2m4 0h1m2 0h2m3 0h3m6 0h1"/></svg>
+</div>
+  <p class="url">esnstuff-crime-night.vercel.app</p>
+  <div class="steps">
+    <div class="step"><b>1. SCAN</b><span>Enter your name and get 4 secret clues.</span></div>
+    <div class="step"><b>2. TALK</b><span>Meet strangers and swap code words to unlock their clues.</span></div>
+    <div class="step"><b>3. ACCUSE</b><span>The suspects are here tonight. Find them, accuse them, win a prize!</span></div>
+  </div>
+  <p class="mission">The crime is an excuse.<br>The real mission is meeting new people.</p>
+  <div class="foot"><span>English · Italiano · Español</span><span class="fiction">ALL FICTION!</span></div>
+</div></div></body></html>
