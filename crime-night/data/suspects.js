@@ -5,7 +5,7 @@ export const SUSPECTS = [
     en: 'Gossip expert. Organised this whole mess.',
     it: 'Esperta di gossip. Ha organizzato tutto questo caos.',
     es: 'Experta en cotilleos. Organizó todo este lío.' } },
-  { name: 'Roberta', photo: null, caption: {
+  { name: 'Roberta', photo: 'img/suspects/roberta.jpg', caption: {
     en: "Sissi's partner in (fake) crime.",
     it: 'Complice (per finta) di Sissi.',
     es: 'Cómplice (de mentira) de Sissi.' } },
@@ -25,7 +25,7 @@ export const SUSPECTS = [
     en: 'Plans aperitivi in litres of Spritz.',
     it: 'Pianifica aperitivi a litri di Spritz.',
     es: 'Planifica aperitivos en litros de Spritz.' } },
-  { name: 'Andrea', photo: null, caption: {
+  { name: 'Andrea', photo: 'img/suspects/andrea.jpg', caption: {
     en: 'Owns more elegant jackets than you.',
     it: 'Ha più giacche eleganti di te.',
     es: 'Tiene más chaquetas elegantes que tú.' } },
