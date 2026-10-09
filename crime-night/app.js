@@ -102,9 +102,9 @@ const VICTIM = CASES.find(c => c.missing).missing;
 const wearOf = name => { const i = SUSPECTS.findIndex(s => s.name === name); return i < 0 ? 2 : i % 4; };
 const COFFEE_RINGS = { Roberta: 1, Andrea: 2, Aitor: 2 }; // name -> ring placement
 
-function mugImg(name, alt = '', src = photo(name)) {
+function mugImg(name, alt = '', src = photo(name), withRing = true) {
   const w = wearOf(name);
-  const r = COFFEE_RINGS[name];
+  const r = withRing && COFFEE_RINGS[name];
   const ring = r ? `<i class="stain-box" aria-hidden="true"><i class="stain stain-${r}"></i></i>` : '';
   return `<span class="photo wear-${w}"><img src="${src}" alt="${alt}" loading="lazy" width="120" height="160" ${FALLBACK}></span>${ring}`;
 }
@@ -260,7 +260,14 @@ const VIEWS = {
         <i class="exhibit">${t('exhibit')} ${pad(i + 1)}</i>
       </figure>`).join('')}
       <figure class="polaroid victim" style="--tilt:2deg">
-        ${mugImg(VICTIM.name, VICTIM.name, VICTIM.photo)}
+        <div class="tv">
+          ${mugImg(VICTIM.name, VICTIM.name, VICTIM.photo, false)}
+          <div class="tv-lower" aria-hidden="true">
+            <b class="tv-title">CHI L'HA VISTO?</b>
+            <span class="tv-name">${esc(VICTIM.name.toUpperCase())} · SCOMPARSO DA 48 ORE</span>
+            <span class="tv-sub">Ultimo avvistamento: ufficio ESN, ore 20:30</span>
+          </div>
+        </div>
         <figcaption><b>${esc(VICTIM.name)}</b><em class="victim-tag">${t('victim_tag')}</em><span>${t('victim_caption')}</span></figcaption>
       </figure></div>`;
   },
