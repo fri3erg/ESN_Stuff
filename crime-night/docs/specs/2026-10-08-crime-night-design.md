@@ -1,10 +1,10 @@
-# ESN Crime Night: website design spec
+# ESN Mystery Night: website design spec
 
 Date: 2026-10-08 · Author: Elia (with Claude) · Status: awaiting review
 
 ## 1. Goal
 
-A phone web app that **replaces the paper cards** for ESN Crime Night (ESN Bologna Tandem Night,
+A phone web app that **replaces the paper cards** for ESN Mystery Night (ESN Bologna Tandem Night,
 Cluricaune Irish Pub, ~400–500 Erasmus students). The printed paper only carries a QR code to the site.
 
 The game's purpose is social: players must talk to strangers to collect clues. The site has to make that
@@ -175,6 +175,8 @@ try/catch, so private mode still works for the session.
   5. `normaliseName` and `normaliseCode` examples.
 - Manual: run locally (`npx serve crime-night`), check at 375 px width in browser devtools: identify →
   unlock a code → auto-cross → accuse → verdict; switch language on each screen; reload to keep state.
+
+**Change 2026-10-12:** the event was renamed from "ESN Crime Night" to "ESN Mystery Night" (URL and folder unchanged).
 
 **Change 2026-10-08:** the optional team-name field was removed (Identify, Clues, Verdict, state).
 Players can still play together informally.

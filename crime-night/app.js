@@ -1,4 +1,4 @@
-// ESN Crime Night: hash-routed single page. Views are template strings; events are delegated on #view.
+// ESN Mystery Night: hash-routed single page. Views are template strings; events are delegated on #view.
 import { CASES } from './data/cases.js';
 import { SUSPECTS } from './data/suspects.js';
 import { t, tr, setLang, getLang, detectLang } from './lib/i18n.js';
@@ -140,7 +140,7 @@ const VIEWS = {
   identify() {
     return `<section class="folder identify">
       <div class="clip"></div><div class="stamp">${t('stamp_topsecret')}</div>
-      <h1>ESN CRIME NIGHT</h1>
+      <h1>ESN MYSTERY NIGHT</h1>
       <p class="tagline">${t('id_tagline')}</p>
       <h2>${t('id_title')}</h2>
       <form id="identify-form" novalidate>
@@ -233,7 +233,7 @@ const VIEWS = {
     const v = state.verdict[id];
     const time = new Date(v.at).toLocaleTimeString(getLang(), { hour: '2-digit', minute: '2-digit' });
     return `<section class="verdict-card">
-      <p class="brand-line">ESN CRIME NIGHT · ${t('case_n', { n: pad(id) })}</p>
+      <p class="brand-line">ESN MYSTERY NIGHT · ${t('case_n', { n: pad(id) })}</p>
       <h1>${t('verdict_title')}</h1>
       <h2>${esc(tr(c.title))}</h2>
       <p class="lbl">${t('verdict_accused')}</p>

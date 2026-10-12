@@ -1,6 +1,6 @@
-# ESN Crime Night 🔍
+# ESN Mystery Night 🔍
 
-Web app for **ESN Crime Night**, a detective social game at the ESN Bologna Tandem Night
+Web app for **ESN Mystery Night**, a detective social game at the ESN Bologna Tandem Night
 at the **Cluricaune Irish Pub** (~400–500 Erasmus students).
 
 The crime is just an excuse. The real mission is meeting new people.
