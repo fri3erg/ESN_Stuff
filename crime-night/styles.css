@@ -305,7 +305,7 @@ input:focus { outline: 3px solid var(--red); outline-offset: 1px; }
   font: italic 900 7px/1 Arial, sans-serif; text-align: center; letter-spacing: .02em;
 }
 .tv-panel { flex: 1; min-width: 0; color: #fff; font-family: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; padding-bottom: 8px; }
-.polaroid .tv-name { display: block; background: #d0201a; font: 900 17px/1.15 'Arial Black', Arial, sans-serif; padding: 6px 8px; letter-spacing: .02em; }
+.polaroid .tv-name { display: block; background: #d0201a; font: 900 17px/1.15 'Arial Black', Arial, sans-serif; padding: 6px 8px 6px 16px; letter-spacing: .02em; }
 .tv-panel dl { display: grid; grid-template-columns: auto 1fr; margin: 4px 8px 0; }
 .tv-panel dt, .tv-panel dd { margin: 0; padding: 5px 0; border-bottom: 1px solid rgba(255, 255, 255, .35); font-size: 11px; }
 .tv-panel dt { padding-right: 8px; white-space: nowrap; }

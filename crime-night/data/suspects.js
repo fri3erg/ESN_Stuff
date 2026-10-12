@@ -21,7 +21,7 @@ export const SUSPECTS = [
     en: 'Professional negotiator. Zero deals closed.',
     it: 'Negoziatrice professionista. Zero accordi chiusi.',
     es: 'Negociadora profesional. Cero acuerdos cerrados.' } },
-  { name: 'Vincenzo', photo: null, caption: {
+  { name: 'Vincenzo', photo: 'img/suspects/vincenzo.jpg', caption: {
     en: 'Plans aperitivi in litres of Spritz.',
     it: 'Pianifica aperitivi a litri di Spritz.',
     es: 'Planifica aperitivos en litros de Spritz.' } },
@@ -33,7 +33,7 @@ export const SUSPECTS = [
     en: 'Claims to have the best bars in Bologna.',
     it: 'Dice di avere le barre migliori di Bologna.',
     es: 'Dice tener las mejores barras de Bolonia.' } },
-  { name: 'Leo', photo: null, caption: {
+  { name: 'Leo', photo: 'img/suspects/leo.jpg', caption: {
     en: 'Kebab shop regular. Karaoke menace.',
     it: 'Habitué del kebabbaro. Minaccia del karaoke.',
     es: 'Cliente fijo del kebab. Amenaza del karaoke.' } },
