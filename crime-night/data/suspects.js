@@ -2,9 +2,9 @@
 // (e.g. img/suspects/sissi.jpg, square-ish) and set `photo` to that path.
 export const SUSPECTS = [
   { name: 'Sissi', photo: 'img/suspects/sissi.jpg', caption: {
-    en: 'Gossip expert. Organised this whole mess.',
-    it: 'Esperta di gossip. Ha organizzato tutto questo caos.',
-    es: 'Experta en cotilleos. Organizó todo este lío.' } },
+    en: 'Knows everything, even your secrets. Organised this whole mess.',
+    it: 'Sa tutto, anche i tuoi segreti. Ha organizzato tutto questo caos.',
+    es: 'Lo sabe todo, incluso tus secretos. Organizó todo este lío.' } },
   { name: 'Roberta', photo: 'img/suspects/roberta.jpg', caption: {
     en: 'Wrote every alibi in this game with Sissi. Including her own… suspicious.',
     it: 'Ha scritto tutti gli alibi di questo gioco con Sissi. Compreso il suo… sospetto.',
