@@ -6,9 +6,9 @@ export const SUSPECTS = [
     it: 'Esperta di gossip. Ha organizzato tutto questo caos.',
     es: 'Experta en cotilleos. Organizó todo este lío.' } },
   { name: 'Roberta', photo: 'img/suspects/roberta.jpg', caption: {
-    en: "Sissi's partner in (fake) crime.",
-    it: 'Complice (per finta) di Sissi.',
-    es: 'Cómplice (de mentira) de Sissi.' } },
+    en: 'Wrote every alibi in this game with Sissi. Including her own… suspicious.',
+    it: 'Ha scritto tutti gli alibi di questo gioco con Sissi. Compreso il suo… sospetto.',
+    es: 'Escribió todas las coartadas de este juego con Sissi. Incluida la suya… sospechoso.' } },
   { name: 'Elia', photo: 'img/suspects/elia.jpg', caption: {
     en: 'Built this website. Restarts routers for fun.',
     it: 'Ha fatto questo sito. Riavvia router per divertimento.',
@@ -22,19 +22,19 @@ export const SUSPECTS = [
     it: 'Negoziatrice professionista. Zero accordi chiusi.',
     es: 'Negociadora profesional. Cero acuerdos cerrados.' } },
   { name: 'Vincenzo', photo: 'img/suspects/vincenzo.jpg', caption: {
-    en: 'Plans aperitivi in litres of Spritz.',
-    it: 'Pianifica aperitivi a litri di Spritz.',
-    es: 'Planifica aperitivos en litros de Spritz.' } },
+    en: 'Comes from the South. Calls anything north of Rome “abroad”.',
+    it: 'Viene dal Sud. Per lui tutto ciò che sta a nord di Roma è “estero”.',
+    es: 'Viene del Sur. Para él, todo lo que está al norte de Roma es “el extranjero”.' } },
   { name: 'Andrea', photo: 'img/suspects/andrea.jpg', caption: {
     en: 'Owns more elegant jackets than you.',
     it: 'Ha più giacche eleganti di te.',
     es: 'Tiene más chaquetas elegantes que tú.' } },
   { name: 'Davide', photo: 'img/suspects/davide.jpg', caption: {
-    en: 'Often mistaken for Luka Modrić. Still waiting for his Ballon d’Or.',
-    it: 'Spesso scambiato per Luka Modrić. Aspetta ancora il suo Pallone d’Oro.',
-    es: 'Lo confunden a menudo con Luka Modrić. Sigue esperando su Balón de Oro.' } },
+    en: 'Yes, he’s Luka Modrić’s brother. Equally blonde, inside and out.',
+    it: 'Sì, è il fratello di Luka Modrić. Biondo dentro e fuori.',
+    es: 'Sí, es el hermano de Luka Modrić. Igual de rubio, por dentro y por fuera.' } },
   { name: 'Leo', photo: 'img/suspects/leo.jpg', caption: {
-    en: 'Biggest freestyler in Bologna. Owns no shirt that isn’t Spain’s.',
-    it: 'Il più grande freestyler di Bologna. Non ha una maglia che non sia della Spagna.',
-    es: 'El mayor freestyler de Bolonia. No tiene ninguna camiseta que no sea de España.' } },
+    en: 'Will freestyle at you if you stand still. Owns only Spain shirts.',
+    it: 'Se stai fermo, ti fa un freestyle in faccia. Ha solo maglie della Spagna.',
+    es: 'Si te quedas quieto, te suelta un freestyle. Solo tiene camisetas de España.' } },
 ];
