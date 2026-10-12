@@ -30,11 +30,11 @@ export const SUSPECTS = [
     it: 'Ha più giacche eleganti di te.',
     es: 'Tiene más chaquetas elegantes que tú.' } },
   { name: 'Davide', photo: 'img/suspects/davide.jpg', caption: {
-    en: 'Claims to have the best bars in Bologna.',
-    it: 'Dice di avere le barre migliori di Bologna.',
-    es: 'Dice tener las mejores barras de Bolonia.' } },
+    en: 'Often mistaken for Luka Modrić. Still waiting for his Ballon d’Or.',
+    it: 'Spesso scambiato per Luka Modrić. Aspetta ancora il suo Pallone d’Oro.',
+    es: 'Lo confunden a menudo con Luka Modrić. Sigue esperando su Balón de Oro.' } },
   { name: 'Leo', photo: 'img/suspects/leo.jpg', caption: {
-    en: 'Kebab shop regular. Karaoke menace.',
-    it: 'Habitué del kebabbaro. Minaccia del karaoke.',
-    es: 'Cliente fijo del kebab. Amenaza del karaoke.' } },
+    en: 'Biggest freestyler in Bologna. Owns no shirt that isn’t Spain’s.',
+    it: 'Il più grande freestyler di Bologna. Non ha una maglia che non sia della Spagna.',
+    es: 'El mayor freestyler de Bolonia. No tiene ninguna camiseta que no sea de España.' } },
 ];
