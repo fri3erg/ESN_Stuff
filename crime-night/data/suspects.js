@@ -22,9 +22,9 @@ export const SUSPECTS = [
     it: 'Negoziatrice professionista. Zero accordi chiusi.',
     es: 'Negociadora profesional. Cero acuerdos cerrados.' } },
   { name: 'Vincenzo', photo: 'img/suspects/vincenzo.jpg', caption: {
-    en: 'Comes from the South. Calls anything north of Rome “abroad”.',
-    it: 'Viene dal Sud. Per lui tutto ciò che sta a nord di Roma è “estero”.',
-    es: 'Viene del Sur. Para él, todo lo que está al norte de Roma es “el extranjero”.' } },
+    en: 'Calls anything north of Rome “abroad”.',
+    it: 'Per lui tutto ciò che sta a nord di Roma è “estero”.',
+    es: 'Para él, todo lo que está al norte de Roma es “el extranjero”.' } },
   { name: 'Andrea', photo: 'img/suspects/andrea.jpg', caption: {
     en: 'Owns more elegant jackets than you.',
     it: 'Ha più giacche eleganti di te.',
