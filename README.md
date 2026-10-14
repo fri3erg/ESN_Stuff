@@ -8,7 +8,8 @@ Each project lives in its own folder and is deployed separately on Vercel.
 
 | Folder | What it is | Status |
 | --- | --- | --- |
-| [`crime-night/`](crime-night/) | ESN Mystery Night: detective game web app for the Tandem Night at the Cluricaune Irish Pub | Live: https://esnstuff-crime-night.vercel.app |
+| [`crime-night/`](crime-night/) | ESN Mystery Night: detective game web app for the Tandem Night at the Cluricaune Irish Pub | Archived: the event ran on 2026-10-13. Kept as is for reference. |
+| [`side-quest/`](side-quest/) | Side Quest: random social challenge per person, proof shown to a volunteer for a candy | In design |
 
 ## Deploying a project on Vercel
 

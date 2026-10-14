@@ -1,5 +1,7 @@
 # ESN Mystery Night 🔍
 
+> **Archived.** The event ran on 2026-10-13. This folder is kept as is for reference; nothing here is maintained.
+
 Web app for **ESN Mystery Night**, a detective social game at the ESN Bologna Tandem Night
 at the **Cluricaune Irish Pub** (~400–500 Erasmus students).
 
