@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Side Quest</title>
+  <meta name="description" content="Get your side quest, complete it, show a volunteer, get a prize.">
+  <meta name="theme-color" content="#07070b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2307070b'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' font-family='Arial' font-weight='900' fill='%23c6ff00'%3E%3F%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #07070b; --card: #14141c; --line: #2a2a40; --text: #ffffff; --muted: #b4b4c8;
+      --lime: #c6ff00; --lime-dark: #6f8f00; --pink: #ff4fae; --cyan: #7ee8f2; --ink: #0a0a0a;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --mono: ui-monospace, "SF Mono", Consolas, monospace;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 18px/1.45 var(--sans); overflow-x: hidden; }
+    button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .screen { max-width: 480px; margin: 0 auto; min-height: 100vh; min-height: 100dvh; padding: 22px 18px calc(24px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
+    .kick { font: 800 13px var(--mono); letter-spacing: .18em; color: var(--pink); margin: 0; }
+    .title { font-size: 46px; font-weight: 900; line-height: .95; margin: 6px 0 22px; color: var(--lime); text-shadow: 0 0 18px rgba(198, 255, 0, .45); letter-spacing: -.01em; }
+    .actions { margin-top: auto; padding-top: 18px; display: grid; gap: 12px; }
+
+    .btn { display: block; width: 100%; min-height: 60px; border: 0; border-radius: 18px; background: var(--lime); color: var(--ink); font-size: 20px; font-weight: 900; letter-spacing: .02em; box-shadow: 0 6px 0 var(--lime-dark); }
+    .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--lime-dark); }
+    .btn2 { display: block; width: 100%; min-height: 52px; border: 2px solid #3a3a52; border-radius: 16px; background: transparent; color: #e2e2ee; font-size: 17px; font-weight: 700; }
+    .link { background: none; border: 0; padding: 0 4px; min-height: 48px; min-width: 48px; text-decoration: underline; font-weight: 700; color: var(--text); }
+
+    .rules { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+    .rules li { display: flex; gap: 14px; align-items: center; font-size: 21px; font-weight: 700; line-height: 1.25; }
+    .rules b { flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--lime); color: var(--ink); display: grid; place-items: center; font-size: 18px; }
+
+    /* hidden quest tile */
+    .cover { display: grid; place-items: center; width: 100%; min-height: 240px; border-radius: 20px; border: 2px dashed var(--lime); color: var(--lime); text-align: center; padding: 16px;
+      background: repeating-linear-gradient(45deg, #101018 0 14px, #15151f 14px 28px); animation: pulse 1.8s infinite; }
+    .cover span { display: block; font-size: 24px; font-weight: 900; }
+    .cover small { display: block; margin-top: 8px; font-size: 16px; color: var(--muted); font-weight: 600; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(198, 255, 0, .45); } 50% { box-shadow: 0 0 0 12px rgba(198, 255, 0, 0); } }
+
+    /* revealed quest + laser scan */
+    .timer { display: flex; justify-content: flex-end; align-items: center; gap: 4px; font: 700 15px var(--mono); color: var(--muted); margin: -10px 0 2px; }
+    .scanbox { position: relative; border-radius: 20px; overflow: hidden; }
+    .qcard { background: var(--card); border: 2px solid var(--lime); border-radius: 20px; padding: 18px; }
+    .qtext { font-size: 22px; font-weight: 800; line-height: 1.3; margin: 0 0 16px; overflow-wrap: anywhere; }
+    .badge { display: inline-flex; gap: 8px; align-items: flex-start; background: var(--pink); color: var(--ink); font-weight: 800; font-size: 17px; line-height: 1.3; padding: 9px 14px; border-radius: 14px; }
+    .scanbox .veil { position: absolute; inset: 0; border-radius: 20px; background: repeating-linear-gradient(45deg, #101018 0 14px, #15151f 14px 28px); animation: uncover .9s linear forwards; }
+    .scanbox .laser { position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--lime); box-shadow: 0 0 16px 5px rgba(198, 255, 0, .7); animation: laser .9s linear forwards; }
+    @keyframes uncover { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(100% 0 0 0); } }
+    @keyframes laser { from { top: 0; opacity: 1; } 95% { opacity: 1; } to { top: 100%; opacity: 0; } }
+
+    /* swap sheet */
+    .dim { position: fixed; inset: 0; background: rgba(0, 0, 0, .75); display: flex; align-items: flex-end; justify-content: center; padding: 14px; z-index: 10; }
+    .sheet { width: 100%; max-width: 460px; background: var(--card); border: 2px solid var(--lime); border-radius: 22px; padding: 20px; display: grid; gap: 12px; margin-bottom: env(safe-area-inset-bottom); }
+    .sheet h2 { margin: 0; font-size: 26px; font-weight: 900; color: var(--lime); }
+    .sheet p { margin: 0 0 4px; font-size: 18px; color: #e4e4ee; }
+
+    /* quest complete: drifting cyan/green background + light sweeping the trophy card.
+       Honest note: the motion makes a screenshot look obviously dead, which deters casual cheating,
+       but a determined person can still fake it (screen recording, a second phone). The stakes are one prize. */
+    body.done { background: linear-gradient(120deg, #05070b, #06323a, #183300, #05070b); background-size: 300% 300%; animation: drift 5s linear infinite alternate; }
+    @keyframes drift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+    .ach { position: relative; overflow: hidden; background: rgba(14, 18, 22, .9); border: 2px solid var(--lime); border-radius: 22px; padding: 24px 18px; text-align: center; box-shadow: 0 0 26px rgba(198, 255, 0, .35); }
+    .ach::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 40%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent); animation: shine 2.6s linear infinite; }
+    @keyframes shine { from { transform: translateX(-140%) skewX(-20deg); } to { transform: translateX(300%) skewX(-20deg); } }
+    .trophy { width: 76px; height: 76px; border-radius: 50%; background: var(--lime); display: grid; place-items: center; font-size: 40px; margin: 0 auto 10px; box-shadow: 0 0 22px rgba(198, 255, 0, .6); }
+    .ach h1 { margin: 0 0 6px; font-size: 34px; font-weight: 900; line-height: 1.05; }
+    .ach p { margin: 0; font-size: 20px; font-weight: 800; color: var(--lime); }
+    .tlabel { font: 800 13px var(--mono); letter-spacing: .18em; color: var(--cyan); text-align: center; margin: 22px 0 0; }
+    .ctime { font: 800 56px/1.1 var(--mono); text-align: center; margin: 0 0 18px; text-shadow: 0 0 14px rgba(126, 232, 242, .7); }
+    .done .qtext { font-size: 19px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .scanbox .veil, .scanbox .laser { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <noscript><p style="padding:24px">Please turn on JavaScript, or find a volunteer.</p></noscript>
+  <script type="module">
+    import { proofOf } from './missions.js';
+    import * as Q from './quest.js';
+
+    const REVEAL_SECONDS = 10;
+    const SCAN_MS = 900;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const app = document.getElementById('app');
+    const store = Q.safeStorage();
+
+    if (new URLSearchParams(location.search).has('reset')) {
+      Q.clear(store);
+      history.replaceState(null, '', location.pathname);   // so a reload doesn't reset again
+    }
+    let state = Q.load(store);
+    let timers = [];
+
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const stopTimers = () => { timers.forEach(t => { clearInterval(t); clearTimeout(t); cancelAnimationFrame(t); }); timers = []; };
+    const persist = () => Q.save(store, state);
+    const badge = m => { const p = proofOf(m); return `<span class="badge"><span aria-hidden="true">${p.icon}</span>${esc(p.text)}</span>`; };
+
+    function render() {
+      stopTimers();
+      document.body.classList.toggle('done', state?.status === 'completed');
+      if (!state) return renderWelcome();
+      if (state.status === 'completed') return renderDone();
+      renderQuest();
+    }
+
+    function renderWelcome() {
+      app.innerHTML = `<main class="screen">
+        <p class="kick">ESN · SIDE QUEST</p>
+        <h1 class="title">SIDE<br>QUEST</h1>
+        <ol class="rules">
+          <li><b>1</b>Get your quest.</li>
+          <li><b>2</b>Complete it.</li>
+          <li><b>3</b>Done? Find a volunteer, show them, get a prize 🎁</li>
+        </ol>
+        <div class="actions"><button class="btn" id="get">GET MY QUEST ▶</button></div>
+      </main>`;
+      document.getElementById('get').onclick = () => { state = Q.assign(); persist(); render(); };
+    }
+
+    function renderQuest() {
+      app.innerHTML = `<main class="screen">
+        <p class="kick">QUEST ACCEPTED</p>
+        <h1 class="title">YOUR<br>QUEST</h1>
+        <div id="slot"></div>
+        <div class="actions">
+          <button class="btn" id="did">I DID IT ▶</button>
+          ${Q.canSwap(state) ? '<button class="btn2" id="swap">🔄 Swap quest (1 left)</button>' : ''}
+        </div>
+      </main>`;
+      showCover();
+      document.getElementById('did').onclick = () => { state = Q.complete(state); persist(); render(); };
+      const swapBtn = document.getElementById('swap');
+      if (swapBtn) swapBtn.onclick = openSwapSheet;
+    }
+
+    function showCover() {
+      stopTimers();
+      const slot = document.getElementById('slot');
+      slot.innerHTML = `<button class="cover" id="reveal"><span>👆 TAP TO REVEAL</span><small>Hidden so people next to you can't read it</small></button>`;
+      document.getElementById('reveal').onclick = reveal;
+    }
+
+    function reveal() {
+      stopTimers();
+      const m = Q.missionById(state.missionId);
+      const slot = document.getElementById('slot');
+      slot.innerHTML = `<div class="timer" aria-live="off">hides in <span id="left">${REVEAL_SECONDS}</span>s · <button class="link" id="hide">Hide</button></div>
+        <div class="scanbox">
+          <div class="qcard"><p class="sr-only">${esc(m.text)}</p><p class="qtext" id="qtext" aria-hidden="true"></p>${badge(m)}</div>
+          ${reduced ? '' : '<div class="veil"></div><div class="laser"></div>'}
+        </div>`;
+      document.getElementById('hide').onclick = showCover;
+      scramble(document.getElementById('qtext'), m.text);
+      let left = REVEAL_SECONDS;
+      timers.push(setInterval(() => {
+        left -= 1;
+        const el = document.getElementById('left');
+        if (el) el.textContent = left;
+        if (left <= 0) showCover();
+      }, 1000));
+    }
+
+    // "Decrypt" effect: random characters settle into the real text, left to right.
+    function scramble(el, text) {
+      if (reduced) { el.textContent = text; return; }
+      const glyphs = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#$%&*';
+      const start = performance.now();
+      const frame = now => {
+        const p = Math.min(1, (now - start) / SCAN_MS);
+        const fixed = Math.floor(p * text.length);
+        el.textContent = text.slice(0, fixed) + [...text.slice(fixed)].map(ch => (ch === ' ' ? ' ' : glyphs[Math.floor(Math.random() * glyphs.length)])).join('');
+        if (p < 1) timers.push(requestAnimationFrame(frame));
+        else el.textContent = text;
+      };
+      timers.push(requestAnimationFrame(frame));
+    }
+
+    function openSwapSheet() {
+      const dim = document.createElement('div');
+      dim.className = 'dim';
+      dim.id = 'sheet';
+      dim.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+        <h2 id="sheet-title">Swap your quest?</h2>
+        <p>You only get <b>one swap</b> tonight. Your new quest is final, no going back.</p>
+        <button class="btn" id="yes">YES, SWAP IT</button>
+        <button class="btn2" id="no">Keep my quest</button>
+      </div>`;
+      document.body.appendChild(dim);
+      const close = () => dim.remove();
+      document.getElementById('no').onclick = close;
+      dim.onclick = e => { if (e.target === dim) close(); };
+      document.getElementById('yes').onclick = () => { state = Q.swap(state); persist(); close(); render(); };
+    }
+
+    function renderDone() {
+      const m = Q.missionById(state.missionId);
+      app.innerHTML = `<main class="screen">
+        <div class="ach"><div class="trophy" aria-hidden="true">🏆</div><h1>Quest complete!</h1><p>Go find a volunteer.</p></div>
+        <p class="tlabel">COMPLETED AT</p>
+        <p class="ctime" id="ctime">${Q.formatTime(state.completedAt)}</p>
+        <div class="qcard"><p class="qtext">${esc(m.text)}</p>${badge(m)}</div>
+      </main>`;
+    }
+
+    render();
+  </script>
+</body>
+</html>
