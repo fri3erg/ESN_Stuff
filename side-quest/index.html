@@ -50,9 +50,16 @@
     .scanbox { position: relative; border-radius: 20px; overflow: hidden; }
     .qcard { background: var(--card); border: 2px solid var(--lime); border-radius: 20px; padding: 18px; }
     .qtext { font-size: 22px; font-weight: 800; line-height: 1.3; margin: 0 0 16px; overflow-wrap: anywhere; }
-    .badge { display: flex; gap: 12px; align-items: center; padding-top: 14px; border-top: 1.5px dashed #3a3a52; color: #ececf4; font-weight: 700; font-size: 17px; line-height: 1.3; }
-    .badge .ic { flex: none; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 21px; background: rgba(198, 255, 0, .12); border: 1.5px solid var(--lime); }
-    .badge b { color: var(--lime); }
+    /* proof: border-only box with a checkmark, pinned to the bottom of the quest card */
+    .badge { display: flex; gap: 12px; align-items: center; margin-top: auto; padding: 12px 14px; border: 2px solid var(--pink); border-radius: 16px; background: transparent; color: #ececf4; font-weight: 700; font-size: 17px; line-height: 1.3; }
+    .badge .ic { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--pink); color: var(--pink); display: grid; place-items: center; }
+    .badge .ic svg { width: 19px; height: 19px; }
+    .badge b { color: var(--pink); }
+    /* quest screen: the hidden tile and the revealed card fill the free space and are the same size */
+    #slot { flex: 1; display: flex; flex-direction: column; min-height: 240px; }
+    .cover { flex: 1; }
+    .scanbox { flex: 1; display: flex; flex-direction: column; }
+    .scanbox .qcard { flex: 1; display: flex; flex-direction: column; }
     .scanbox .veil { position: absolute; inset: 0; border-radius: 20px; background: repeating-linear-gradient(45deg, #101018 0 14px, #15151f 14px 28px); animation: uncover .9s linear forwards; }
     .scanbox .laser { position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--lime); box-shadow: 0 0 16px 5px rgba(198, 255, 0, .7); animation: laser .9s linear forwards; }
     @keyframes uncover { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(100% 0 0 0); } }
@@ -78,6 +85,19 @@
     .tlabel { font: 800 13px var(--mono); letter-spacing: .18em; color: var(--cyan); text-align: center; margin: 22px 0 0; }
     .ctime { font: 800 56px/1.1 var(--mono); text-align: center; margin: 0 0 18px; text-shadow: 0 0 14px rgba(126, 232, 242, .7); }
     .done .qtext { font-size: 19px; }
+
+    /* short phones: a bit less title so even the longest quest fits without the box growing */
+    @media (max-height: 700px) {
+      .title { font-size: 38px; margin-bottom: 14px; }
+      .qtext { font-size: 20px; }
+      .ach { padding: 16px 14px; }
+      .trophy { width: 54px; height: 54px; font-size: 28px; margin-bottom: 6px; }
+      .ach h1 { font-size: 28px; }
+      .ach p { font-size: 18px; }
+      .tlabel { margin-top: 14px; }
+      .ctime { font-size: 44px; margin-bottom: 12px; }
+      .done .qtext { font-size: 18px; margin-bottom: 12px; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -110,7 +130,8 @@
     const badge = m => {
       const p = proofOf(m);
       const rest = p.text.replace(/^Proof:\s*/, '');
-      return `<div class="badge"><span class="ic" aria-hidden="true">${p.icon}</span><span><b>Proof:</b> ${esc(rest)}</span></div>`;
+      const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+      return `<div class="badge"><span class="ic" aria-hidden="true">${check}</span><span><b>Proof:</b> ${esc(rest)}</span></div>`;
     };
 
     function render() {
