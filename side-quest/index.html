@@ -19,7 +19,7 @@
     html { -webkit-text-size-adjust: 100%; }
     body { margin: 0; background: var(--bg); color: var(--text); font: 18px/1.45 var(--sans); overflow-x: hidden; }
     button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
     .screen { max-width: 480px; margin: 0 auto; min-height: 100vh; min-height: 100dvh; padding: 22px 18px calc(24px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
     .kick { font: 800 13px var(--mono); letter-spacing: .18em; color: var(--pink); margin: 0; }
@@ -146,8 +146,11 @@
     function showCover() {
       stopTimers();
       const slot = document.getElementById('slot');
+      const hadFocus = slot.contains(document.activeElement);
       slot.innerHTML = `<button class="cover" id="reveal"><span>👆 TAP TO REVEAL</span><small>Hidden so people next to you can't read it</small></button>`;
-      document.getElementById('reveal').onclick = reveal;
+      const cover = document.getElementById('reveal');
+      cover.onclick = reveal;
+      if (hadFocus) cover.focus({ preventScroll: true });   // keyboard / screen-reader users don't lose their place
     }
 
     function reveal() {
@@ -156,10 +159,11 @@
       const slot = document.getElementById('slot');
       slot.innerHTML = `<div class="timer" aria-live="off">hides in <span id="left">${REVEAL_SECONDS}</span>s · <button class="link" id="hide">Hide</button></div>
         <div class="scanbox">
-          <div class="qcard"><p class="sr-only">${esc(m.text)}</p><p class="qtext" id="qtext" aria-hidden="true"></p>${badge(m)}</div>
+          <div class="qcard"><p class="sr-only" id="qread" tabindex="-1">${esc(m.text)}</p><p class="qtext" id="qtext" aria-hidden="true"></p>${badge(m)}</div>
           ${reduced ? '' : '<div class="veil"></div><div class="laser"></div>'}
         </div>`;
       document.getElementById('hide').onclick = showCover;
+      document.getElementById('qread').focus({ preventScroll: true });   // screen readers read the real text, not the scramble
       scramble(document.getElementById('qtext'), m.text);
       let left = REVEAL_SECONDS;
       timers.push(setInterval(() => {
@@ -186,6 +190,8 @@
     }
 
     function openSwapSheet() {
+      if (document.getElementById('sheet')) return;   // never two sheets (e.g. Enter pressed again behind it)
+      const opener = document.getElementById('swap');
       const dim = document.createElement('div');
       dim.className = 'dim';
       dim.id = 'sheet';
@@ -196,10 +202,17 @@
         <button class="btn2" id="no">Keep my quest</button>
       </div>`;
       document.body.appendChild(dim);
-      const close = () => dim.remove();
+      const onKey = e => { if (e.key === 'Escape') close(); };
+      const close = () => {
+        dim.remove();
+        document.removeEventListener('keydown', onKey);
+        if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+      };
+      document.addEventListener('keydown', onKey);
       document.getElementById('no').onclick = close;
       dim.onclick = e => { if (e.target === dim) close(); };
       document.getElementById('yes').onclick = () => { state = Q.swap(state); persist(); close(); render(); };
+      document.getElementById('no').focus({ preventScroll: true });
     }
 
     function renderDone() {
