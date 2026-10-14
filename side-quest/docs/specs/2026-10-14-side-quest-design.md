@@ -18,6 +18,12 @@ visual design chosen from the mockups.
 | "Completed at HH:MM" line under the clock | Dropped (the big time *is* the completion time). |
 | "One quest per person tonight" (optional) | Not shown. |
 | Missions #2 (sip of a stranger's drink) and #17 (loser buys the next round) | **Kept as written** after discussion. |
+| Quest auto-hides after 10 s, with a Hide button | **No re-hiding** (decided after the first build): once revealed, the quest stays visible. It still starts hidden on every load. |
+| Cover text "Tap to reveal your quest" + explanation | Just **"👆 TAP TO REVEAL"**, centred. |
+| Pink proof badge | **Proof row** under a dashed line: lime icon tile + "**Proof:** …" in white (the pink block looked bad). |
+| Completion: "Go find a volunteer." | **"Go find a volunteer for a small prize."** |
+| Mission #5 text | Adds **"No pen? Ask a volunteer for one."** |
+| "One quest per phone is the intended rule", no further buttons on the complete screen | **"🔁 Play again"** button on the complete screen, behind a confirmation ("Play again? This clears your completed quest from this phone and you lose this screen. Show it to a volunteer first!" → YES, NEW QUEST / Keep this screen). A new game gets a fresh swap. |
 | Pick a mission uniformly at random | Kept. Random per phone, not by name: a name hash gives the same spread and adds typing. Simulation, 500 players and 20 quests: the least-picked quest typically gets ~16 people and the most-picked ~34 (ideal 25). An exact split would need a shared server counter, which the brief rules out. |
 
 ## 2. Visual design: "Neon Arcade"

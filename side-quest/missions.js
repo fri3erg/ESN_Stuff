@@ -13,7 +13,7 @@ export const MISSIONS = [
   { id: 2,  proof: 'tell',  text: "Get a sip of someone's drink you don't know." },
   { id: 3,  proof: 'phone', text: "Get two strangers who don't know each other to exchange Instagram.", proofNote: 'Proof: show the new follow or chat on your phone' },
   { id: 4,  proof: 'video', text: 'Get someone to teach you a dance move and dance it together.' },
-  { id: 5,  proof: 'live',  text: 'Get a stranger to draw a small fake tattoo on your hand with a pen.', proofNote: 'Proof: show the tattoo to a volunteer' },
+  { id: 5,  proof: 'live',  text: 'Get a stranger to draw a small fake tattoo on your hand with a pen. No pen? Ask a volunteer for one.', proofNote: 'Proof: show the tattoo to a volunteer' },
   { id: 6,  proof: 'photo', text: 'Get two separate groups of strangers to toast all together.' },
   { id: 7,  proof: 'tell',  text: 'Have a whole conversation with a stranger, each of you speaking only your own language, trying to understand each other.' },
   { id: 8,  proof: 'photo', text: 'Set up a swap between your group and a group of strangers: send one of your friends over to them, and get one of them sent over to you.' },
