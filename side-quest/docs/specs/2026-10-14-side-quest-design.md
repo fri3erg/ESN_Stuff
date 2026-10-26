@@ -24,6 +24,7 @@ visual design chosen from the mockups.
 | Quest box size | The hidden tile and the revealed card **fill the free space and are the same size**, so revealing doesn't make the box jump. On short phones (≤ 700 px tall) titles and text shrink slightly so the longest quest still fits. |
 | Completion: "Go find a volunteer." | **"Go find a volunteer for a small prize."** |
 | Mission #5 text | Adds **"No pen? Ask a volunteer for one."** |
+| 20 missions | **23**: added #21 photoshoot with a piece of clothing (photo, "show the pictures to a volunteer"), #22 fake birthday "Happy Birthday" (video), #23 5 hugs to strangers (tell). **Never state the number of quests** to players or staff (banner, site, staff sheet). |
 | "One quest per phone is the intended rule", no further buttons on the complete screen | **"🔁 Play again"** button on the complete screen, behind a confirmation ("Play again? This clears your completed quest from this phone and you lose this screen. Show it to a volunteer first!" → YES, NEW QUEST / Keep this screen). A new game gets a fresh swap. |
 | Pick a mission uniformly at random | Kept. Random per phone, not by name: a name hash gives the same spread and adds typing. Simulation, 500 players and 20 quests: the least-picked quest typically gets ~16 people and the most-picked ~34 (ideal 25). An exact split would need a shared server counter, which the brief rules out. |
 
@@ -49,7 +50,7 @@ Plain static files with no build step and no dependencies, deployed by Vercel fr
 ```
 side-quest/
 ├── index.html        # markup + inline CSS + inline boot script (imports the two modules)
-├── missions.js       # the 20 missions + proof types: the only file the organiser edits
+├── missions.js       # the missions + proof types: the only file the organiser edits
 ├── quest.js          # pure state logic (no DOM): random pick, swap, complete, load/save/reset
 ├── tests/
 │   ├── missions.test.mjs

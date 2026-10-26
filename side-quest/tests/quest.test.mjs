@@ -5,17 +5,17 @@ import * as Q from '../quest.js';
 const fixed = k => () => k;            // rng that always returns k
 const seq = (...ks) => { let i = 0; return () => ks[i++ % ks.length]; };
 
-test('pickMission is uniform over all 20 missions', () => {
-  const counts = new Map();
-  for (let i = 0; i < 20000; i++) { const id = Q.pickMission(); counts.set(id, (counts.get(id) || 0) + 1); }
-  assert.equal(counts.size, 20);
-  for (const [id, c] of counts) assert.ok(c > 800 && c < 1200, `mission ${id}: ${c}`);
+test('pickMission is uniform over all missions', () => {
+  const counts = new Map(), N = 20000, ideal = N / Q.IDS.length;
+  for (let i = 0; i < N; i++) { const id = Q.pickMission(); counts.set(id, (counts.get(id) || 0) + 1); }
+  assert.equal(counts.size, Q.IDS.length);
+  for (const [id, c] of counts) assert.ok(c > ideal * 0.8 && c < ideal * 1.2, `mission ${id}: ${c}`);
 });
 
 test('a few hundred picks show every mission', () => {
   const seen = new Set();
-  for (let i = 0; i < 400; i++) seen.add(Q.pickMission());
-  assert.equal(seen.size, 20);
+  for (let i = 0; i < 500; i++) seen.add(Q.pickMission());
+  assert.equal(seen.size, Q.IDS.length);
 });
 
 test('secureRandomInt stays in range', () => {

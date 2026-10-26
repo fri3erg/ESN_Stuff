@@ -1,4 +1,4 @@
-// The 20 side quests. To change wording, edit only this file; the logic lives in quest.js.
+// The side quests. To change wording, edit only this file; the logic lives in quest.js.
 // proof: how the player proves it to a volunteer. proofNote replaces the default instruction.
 export const PROOFS = {
   live:  { icon: '✋', text: 'Proof: do it live in front of a volunteer' },
@@ -29,6 +29,9 @@ export const MISSIONS = [
   { id: 18, proof: 'live',  text: 'Get someone to teach you a small good-luck ritual from their country, and do it together before the next toast.', proofNote: 'Proof: show the ritual to a volunteer' },
   { id: 19, proof: 'live',  text: 'Get a stranger to teach you a full sentence (not just a word) in their language, then use it with a different third person and make yourself understood.', proofNote: 'Proof: say the sentence to a volunteer' },
   { id: 20, proof: 'video', text: 'Create a dance combo with a stranger, just the two of you.' },
+  { id: 21, proof: 'photo', text: 'Ask a few strangers to do a small photoshoot with a piece of clothing one of you has.', proofNote: 'Proof: show the pictures to a volunteer' },
+  { id: 22, proof: 'video', text: 'Pretend it’s your birthday and get a group of strangers to sing “Happy Birthday” to you.' },
+  { id: 23, proof: 'tell',  text: 'Give 5 hugs to strangers.' },
 ];
 
 export function proofOf(mission) {
