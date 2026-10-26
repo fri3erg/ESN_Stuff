@@ -3,7 +3,7 @@
 One-page party game for an ESN Bologna Erasmus night: scan the QR, get one random side quest,
 complete it, show a volunteer, get a prize.
 
-Live: https://esnstuff-side-quest.vercel.app
+Live: https://esn-side-quest.vercel.app
 
 - Brief from the organiser: [docs/brief.md](docs/brief.md)
 - Design decisions (what changed from the brief): [docs/specs/2026-10-14-side-quest-design.md](docs/specs/2026-10-14-side-quest-design.md)
