@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taboo Night: pick a theme</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f3f1ec; color: #222; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { max-width: 980px; margin: 0 auto; padding: 28px 18px 8px; }
+  header h1 { margin: 0 0 6px; font-size: 26px; }
+  header p { margin: 0; color: #555; line-height: 1.5; }
+  .row { max-width: 980px; margin: 0 auto; padding: 18px; display: flex; gap: 26px; flex-wrap: wrap; justify-content: center; }
+  .opt { width: 280px; }
+  .phone { width: 260px; height: 540px; margin: 0 auto; border-radius: 36px; border: 10px solid #111; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+  .desc { padding: 12px 6px 0; }
+  .desc h2 { margin: 0 0 4px; font-size: 18px; }
+  .desc p { margin: 0; font-size: 14px; line-height: 1.45; color: #444; }
+  footer { max-width: 980px; margin: 0 auto; padding: 8px 18px 30px; color: #666; font-size: 14px; }
+
+  .scr { height: 100%; padding: 16px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .top { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 14px; }
+  .forb { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .btns { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .btns span { display: grid; place-items: center; min-height: 54px; border-radius: 14px; font-weight: 900; font-size: 16px; }
+  .btns .skip { grid-column: 1 / -1; min-height: 42px; font-size: 14px; }
+
+  /* A: game night (petrol, cream, tomato) */
+  .A { background: #0e3b43; }
+  .A .top { color: #f6e7c8; }
+  .A .pill { background: rgba(246,231,200,.12); border-radius: 999px; padding: 4px 10px; }
+  .A .card { background: #fbf1dc; border-radius: 20px; padding: 12px; box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+  .A .cat { font: 800 11px ui-monospace, Consolas, monospace; letter-spacing: .2em; color: #0e3b43; text-align: center; opacity: .7; }
+  .A .word { background: #e5533d; color: #fff; border-radius: 14px; text-align: center; font-size: 27px; font-weight: 900; padding: 13px 6px; margin: 7px 0 10px; letter-spacing: .02em; }
+  .A .forb li { background: #fff; border: 2px solid #ecdcb9; border-radius: 10px; padding: 6px 10px; font-weight: 800; color: #0e3b43; font-size: 16px; text-align: center; }
+  .A .ok { background: #3fbf8a; color: #062b1d; } .A .no { background: #e5533d; color: #fff; }
+  .A .skip { border: 2px solid rgba(246,231,200,.45); color: #f6e7c8; }
+
+  /* B: ESN (dark blue, white card, colour accents) */
+  .B { background: linear-gradient(180deg, #2e3192, #1c1e63); color: #fff; }
+  .B .top { color: #fff; }
+  .B .pill { background: rgba(255,255,255,.14); border-radius: 999px; padding: 4px 10px; }
+  .B .dots { display: flex; gap: 6px; justify-content: center; }
+  .B .dots i { width: 8px; height: 8px; border-radius: 50%; display: block; }
+  .B .card { background: #fff; border-radius: 22px; padding: 14px 12px 12px; color: #1c1e63; box-shadow: 0 12px 26px rgba(0,0,0,.35); }
+  .B .cat { display: table; margin: 0 auto; background: #e6f6fd; color: #0079a8; font: 800 11px ui-monospace, Consolas, monospace; letter-spacing: .18em; padding: 4px 10px; border-radius: 999px; }
+  .B .word { font-size: 30px; font-weight: 900; text-align: center; padding: 10px 6px 4px; }
+  .B .no-say { font: 800 11px ui-monospace, Consolas, monospace; letter-spacing: .14em; text-align: center; color: #c4006f; margin-bottom: 6px; }
+  .B .forb li { display: flex; align-items: center; gap: 10px; justify-content: center; padding: 5px 2px; font-size: 17px; font-weight: 700; border-top: 1px solid #ececf6; }
+  .B .forb li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+  .B .ok { background: #7ac143; color: #0f2a00; } .B .no { background: #ec008c; color: #fff; }
+  .B .skip { border: 2px solid rgba(255,255,255,.4); color: #fff; }
+
+  /* C: Irish pub chalkboard */
+  .C { background: #3b2414; padding: 10px; }
+  .C .board { height: 100%; background: #1f3a2c radial-gradient(ellipse at 30% 20%, #2a4a39, #1a3125 70%); border-radius: 16px; border: 6px solid #6b4423;
+    color: #f2f2ec; font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; padding: 14px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .C .top { color: #f2f2ec; }
+  .C .cat { text-align: center; font-size: 13px; letter-spacing: .2em; color: #cfe8d6; }
+  .C .word { font-size: 31px; text-align: center; font-weight: 700; text-shadow: 0 0 1px #fff, 1px 1px 0 rgba(255,255,255,.25); margin: 2px 0 4px; }
+  .C .no-say { text-align: center; color: #ffb3b3; font-size: 13px; }
+  .C .forb li { text-align: center; font-size: 18px; text-decoration: line-through; text-decoration-color: #ff8080; text-decoration-thickness: 2px; }
+  .C .ok { background: #e9f5df; color: #1f3a2c; } .C .no { background: #ff8080; color: #2a0000; }
+  .C .skip { border: 2px dashed #cfe8d6; color: #cfe8d6; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🎭 Taboo Night: pick a theme</h1>
+  <p>This is the screen the person describing holds on their phone: the word to guess, the 5 forbidden words, a timer and the score.
+  ✓ = guessed, ✗ = said a forbidden word, Skip = pass. Which one do you like: <b>A</b>, <b>B</b> or <b>C</b>?</p>
+</header>
+
+<div class="row">
+  <div class="opt">
+    <div class="phone"><div class="scr A">
+      <div class="top"><span class="pill">⏱ 0:42</span><span class="pill">★ 3</span></div>
+      <div class="card">
+        <div class="cat">JOBS</div>
+        <div class="word">FIREFIGHTER</div>
+        <ul class="forb"><li>FIRE</li><li>TRUCK</li><li>WATER</li><li>HOSE</li><li>RESCUE</li></ul>
+      </div>
+      <div class="btns"><span class="ok">✓ GOT IT</span><span class="no">✗ TABOO!</span><span class="skip">Skip →</span></div>
+    </div></div>
+    <div class="desc"><h2>A · Game night</h2><p>Petrol blue, a cream card and a tomato-red band for the word. Warm and playful, like a board game on the table.</p></div>
+  </div>
+
+  <div class="opt">
+    <div class="phone"><div class="scr B">
+      <div class="top"><span class="pill">⏱ 0:42</span><span class="pill">★ 3</span></div>
+      <div class="dots"><i style="background:#00aeef"></i><i style="background:#ec008c"></i><i style="background:#7ac143"></i><i style="background:#f47b20"></i></div>
+      <div class="card">
+        <div class="cat">JOBS</div>
+        <div class="word">Firefighter</div>
+        <div class="no-say">DON'T SAY</div>
+        <ul class="forb">
+          <li style="--c:#00aeef">fire</li><li style="--c:#ec008c">truck</li><li style="--c:#7ac143">water</li><li style="--c:#f47b20">hose</li><li style="--c:#00aeef">rescue</li>
+        </ul>
+      </div>
+      <div class="btns"><span class="ok">✓ GOT IT</span><span class="no">✗ TABOO!</span><span class="skip">Skip →</span></div>
+    </div></div>
+    <div class="desc"><h2>B · ESN</h2><p>Dark ESN blue with a clean white card. The four ESN colours only as small accents. Matches the event posts.</p></div>
+  </div>
+
+  <div class="opt">
+    <div class="phone"><div class="C" style="height:100%"><div class="board">
+      <div class="top"><span>⏱ 0:42</span><span>★ 3</span></div>
+      <div class="cat">~ JOBS ~</div>
+      <div class="word">Firefighter</div>
+      <div class="no-say">don't say:</div>
+      <ul class="forb"><li>fire</li><li>truck</li><li>water</li><li>hose</li><li>rescue</li></ul>
+      <div class="btns"><span class="ok">✓ Got it</span><span class="no">✗ Taboo!</span><span class="skip">Skip →</span></div>
+    </div></div></div>
+    <div class="desc"><h2>C · Irish pub chalkboard</h2><p>A green chalkboard in a wooden frame, forbidden words crossed out in red chalk. Fits the Irish Pub.</p></div>
+  </div>
+</div>
+
+<footer>Mockup only, not the final site. ESN Bologna · Taboo Tandem Night</footer>
+</body>
+</html>
